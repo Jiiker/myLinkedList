@@ -7,12 +7,12 @@ public class Node<T> {
         this.next = null;
     }
 
-    public T getData(Node<T> node) {
-        return node.data;
+    public T getData() {
+        return data;
     }
 
-    public Node<T> getNext(Node<T> node) {
-        return node.next;
+    public Node<T> getNext() {
+        return next;
     }
 
     public void setNext(Node<T> next) {
