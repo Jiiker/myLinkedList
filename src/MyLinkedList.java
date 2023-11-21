@@ -21,4 +21,37 @@ public class MyLinkedList<T> {
         }
         size++;
     }
+
+    public T get(int index) {
+        if (index < 0 || index > size)
+        {
+            throw new IndexOutOfBoundsException();
+        }
+        else
+        {
+            Node<T> node = head;
+            for (int i = 0; i < index; i++)
+            {
+                node = node.getNext();
+            }
+            return node.getData();
+        }
+    }
+
+    public void delete(int index) {
+        if (index < 0 || index > size)
+        {
+            throw new IndexOutOfBoundsException();
+        }
+        else
+        {
+            Node<T> node = head;
+            for (int i = 0; i < index - 1; i++)
+            {
+                node = node.getNext();
+            }
+
+            node.setNext(node.getNext().getNext());
+        }
+    }
 }
