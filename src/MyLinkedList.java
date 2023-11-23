@@ -1,4 +1,7 @@
-public class MyLinkedList<T> {
+import java.util.Iterator;
+import java.util.NoSuchElementException;
+
+public class MyLinkedList<T> implements Iterable<T> {
     private Node<T> head;
     private int size = 0;
 
@@ -54,4 +57,27 @@ public class MyLinkedList<T> {
             node.setNext(node.getNext().getNext());
         }
     }
+
+    @Override
+    public Iterator<T> iterator() {
+
+        return new Iterator<T>() {
+            private Node<T> cur = head;
+
+            @Override
+            public boolean hasNext() {
+                return cur.getNext() != null;
+            }
+
+            @Override
+            public T next() {
+                if (!this.hasNext())
+                {
+                    throw new NoSuchElementException();
+                }
+                cur = cur.getNext();
+                return cur.getData();
+            }
+        };
+    };
 }
