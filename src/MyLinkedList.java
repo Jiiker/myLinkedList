@@ -66,7 +66,7 @@ public class MyLinkedList<T> implements Iterable<T> {
 
             @Override
             public boolean hasNext() {
-                return cur.getNext() != null;
+                return cur != null;
             }
 
             @Override
@@ -75,8 +75,9 @@ public class MyLinkedList<T> implements Iterable<T> {
                 {
                     throw new NoSuchElementException();
                 }
+                T data = cur.getData();
                 cur = cur.getNext();
-                return cur.getData();
+                return data;
             }
         };
     };
